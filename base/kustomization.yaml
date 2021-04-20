@@ -4,7 +4,7 @@ kind: Kustomization
 # configurations:
 # - https://argoproj.github.io/argo-rollouts/features/kustomize/rollout-transform.yaml
 patches:
-- path: patches/transform_to_rollout.json
+- path: ./transform_to_rollout.json
   target:
     group: apps
     version: v1
