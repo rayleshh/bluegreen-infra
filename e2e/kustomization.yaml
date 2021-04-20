@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../base
+
+patchesStrategicMerge:
+- ./deployment-patch.yaml
+
+images:
+- name: rayleshh/argocd-app
+  newTag: 6478717616073233498f436e5eee865454b3898f
