@@ -1,5 +1,5 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: demo
 spec:
@@ -15,12 +15,7 @@ spec:
         app: demo
     spec:
       containers:
-      - name: demo
-        image: rayleshh/argocd-app:6478717616073233498f436e5eee865454b3898f
+      - image: rayleshh/argocd-app:6478717616073233498f436e5eee865454b3898f
+        name: demo
         ports:
-        - name: http
-          containerPort: 8080
-          protocol: TCP
-  strategy:
-    blueGreen:
-      activeService: demo
+        - containerPort: 8080
