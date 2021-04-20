@@ -8,13 +8,13 @@ patchesStrategicMerge:
 - ./deployment-patch.yaml
 
 patches:
-- path: ../transform_to_rollout.json
+- path: ../base/transform_to_rollout.json
   target:
     group: apps
     version: v1
     kind: Deployment
     name: demo
-    
+
 images:
 - name: rayleshh/argocd-app
   newTag: 6478717616073233498f436e5eee865454b3898f
