@@ -14,38 +14,13 @@ spec:
       labels:
         app: demo
     spec:
-      volumes:
-      - name: config-volume
-        configMap:
-          name: rollouts-demo-cm
-      - name: secret-volume
-        secret:
-          secretName: rollouts-demo-secret
       containers:
       - name: demo
         image: rayleshh/argocd-app:6478717616073233498f436e5eee865454b3898f
-        command:
-        - ping $(SERVICE_NAME)
         ports:
         - name: http
           containerPort: 8080
           protocol: TCP
-        volumeMounts:
-        - name: config-volume
-          mountPath: /etc/config
-        - name: secret-volume
-          mountPath: /etc/secrets
-        env:
-        - name: PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: rollouts-demo-secret
-              key: password
-        - name: FOO
-          valueFrom:
-            configMapKeyRef:
-              name: rollouts-demo-cm
-              key: FOO
   strategy:
     blueGreen:
-      activeService: rollouts-demo-svc
+      activeService: demo
